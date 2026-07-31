@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Girlfriend's Day ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ambient canvas layers (petals, glitter, hearts) -->
+<canvas id="ambient-canvas"></canvas>
+
+<!-- ============ WELCOME / OPENING SCREEN ============ -->
+<section id="welcome-screen">
+  <div class="welcome-glow"></div>
+  <div class="welcome-flowers">
+    <span class="wf wf-1">🌻</span>
+    <span class="wf wf-2">🤍</span>
+    <span class="wf wf-3">💜</span>
+    <span class="wf wf-4">🌻</span>
+    <span class="wf wf-5">🤍</span>
+  </div>
+  <div class="welcome-inner">
+    <p class="eyebrow">1st of August</p>
+    <h1 class="welcome-title">Happy Girlfriend's<br>Day <span class="heart">❤️</span></h1>
+    <p class="welcome-sub">A little surprise made with all my love.</p>
+    <button id="reveal-btn" class="btn-reveal">
+      <span class="sparkle-left">✨</span> Tap to Reveal <span class="sparkle-right">✨</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ MAIN SITE (hidden until revealed) ============ -->
+<div id="main-site">
+
+  <!-- Floating music player -->
+  <div id="music-player" class="music-player">
+    <button id="play-pause" class="mp-btn" aria-label="Play or pause music">
+      <i class="fa-solid fa-play" id="play-icon"></i>
+    </button>
+    <div class="mp-wave" id="mp-wave">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <audio id="bg-music" src="assets/music/lover.mp3" loop preload="auto"></audio>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="hero">
+    <div class="hero-sun" id="hero-sun"></div>
+    <div class="hero-media">
+      <div class="hero-frame photo-slot" data-slot="hero">
+        <img class="slot-img" src="assets/hero/betu.jpg" alt="Us together" onerror="this.parentElement.classList.add('img-missing')">
+        <span class="frame-fallback"><i class="fa-solid fa-heart"></i></span>
+      </div>
+    </div>
+    <p class="eyebrow reveal-up">Est. the day we met</p>
+    <h1 class="hero-title reveal-up">Happy Girlfriend's<br>Day <span class="heart">❤️</span></h1>
+    <p class="hero-sub reveal-up">You make every day brighter than a field of sunflowers 🌻💌</p>
+    <a href="#gallery" class="scroll-cue reveal-up"><span>scroll to unfold</span><i class="fa-solid fa-chevron-down"></i></a>
+  </header>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section gallery-section" id="gallery">
+    <p class="eyebrow section-eyebrow fade-in">field notes</p>
+    <h2 class="section-title fade-in">A Little Bouquet of Us</h2>
+    <div class="gallery-grid fade-in">
+      <button class="gallery-item photo-slot" data-slot="gallery-1" style="--i:0"><img class="slot-img" src="assets/photos/photo1.jpg" alt="Memory one" onerror="this.parentElement.classList.add('img-missing')"><span class="frame-fallback"><i class="fa-solid fa-image"></i></span></button>
+      <button class="gallery-item photo-slot" data-slot="gallery-2" style="--i:1"><img class="slot-img" src="assets/photos/photo2.jpg" alt="Memory two" onerror="this.parentElement.classList.add('img-missing')"><span class="frame-fallback"><i class="fa-solid fa-image"></i></span></button>
+      <button class="gallery-item photo-slot" data-slot="gallery-3" style="--i:2"><img class="slot-img" src="assets/photos/photo3.jpg" alt="Memory three" onerror="this.parentElement.classList.add('img-missing')"><span class="frame-fallback"><i class="fa-solid fa-image"></i></span></button>
+      <button class="gallery-item photo-slot" data-slot="gallery-4" style="--i:3"><img class="slot-img" src="assets/photos/photo4.jpg" alt="Memory four" onerror="this.parentElement.classList.add('img-missing')"><span class="frame-fallback"><i class="fa-solid fa-image"></i></span></button>
+      <button class="gallery-item photo-slot" data-slot="gallery-5" style="--i:4"><img class="slot-img" src="assets/photos/photo5.jpg" alt="Memory five" onerror="this.parentElement.classList.add('img-missing')"><span class="frame-fallback"><i class="fa-solid fa-image"></i></span></button>
+      <button class="gallery-item photo-slot" data-slot="gallery-6" style="--i:5"><img class="slot-img" src="assets/photos/photo6.jpg" alt="Memory six" onerror="this.parentElement.classList.add('img-missing')"><span class="frame-fallback"><i class="fa-solid fa-image"></i></span></button>
+    </div>
+  </section>
+
+  <!-- Lightbox for gallery -->
+  <div id="lightbox" class="lightbox">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <img id="lightbox-img" src="" alt="Enlarged memory">
+  </div>
+
+  <!-- ============ VIDEO MEMORIES ============ -->
+  <section class="section video-section">
+    <p class="eyebrow section-eyebrow fade-in">moving pictures</p>
+    <h2 class="section-title fade-in">Our Beautiful Moments</h2>
+    <div class="video-card fade-in" id="video-card">
+      <div class="video-frame">
+        <video id="memory-video" poster="assets/phog" playsinline preload="metadata">
+          Your browser doesn't support embedded video.
+        </video>
+        <button class="video-center-btn" id="video-center-btn" aria-label="Play video">
+          <i class="fa-solid fa-play"></i>
+        </button>
+      </div>
+      <div class="video-controls">
+        <button class="video-play-btn" id="video-play-btn" aria-label="Play or pause video">
+          <i class="fa-solid fa-play" id="video-play-icon"></i>
+        </button>
+        <div class="video-progress" id="video-progress">
+          <div class="video-progress-fill" id="video-progress-fill"></div>
+        </div>
+        <span class="video-time" id="video-time">0:00 / 0:00</span>
+        <button class="video-mute-btn" id="video-mute-btn" aria-label="Mute or unmute video">
+          <i class="fa-solid fa-volume-high" id="video-mute-icon"></i>
+        </button>
+        <button class="video-fullscreen-btn" id="video-fullscreen-btn" aria-label="Fullscreen">
+          <i class="fa-solid fa-expand"></i>
+        </button>
+      </div>
+      <div class="video-playlist-wrap" id="video-playlist-wrap" aria-label="Video playlist">
+        <div class="video-playlist" id="video-playlist"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIARY LOVE LETTER ============ -->
+  <section class="section diary-section" id="diary">
+    <p class="eyebrow section-eyebrow fade-in">for your eyes only</p>
+    <h2 class="section-title fade-in">A Page From My Heart</h2>
+    <div class="diary fade-in" id="diary-book">
+      <div class="diary-cover" id="diary-cover">
+        <div class="diary-cover-title">
+          <i class="fa-solid fa-feather"></i>
+          <span>for my LOVE, 💌</span>
+        </div>
+        <p class="diary-hint" id="diary-hint">tap to open</p>
+      </div>
+      <div class="diary-pages">
+        <div class="diary-page">
+          <p class="diary-date">Happy Girlfriend's Day, Betuuuuuuu! 🌻❤️</p>
+          <p class="diary-text">
+           I know we're just at the beginning of our story, but I'm already so grateful that you're in my life. I don't know how to put everything I feel into words, but one thing I know for sure is that you've made my days brighter. Every moment with you, no matter how simple, becomes a memory worth keeping.
+          </p>
+          <p class="diary-text">
+            I've learned that love isn't about choosing the easiest person to love.
+            It's about choosing someone every single day and reminding them through your actions that they deserve to be loved, appreciated, and cherished.
+            I can't wait to make more memories with you, go on more little adventures, and celebrate many more Girlfriend's Days together.
+          </p>
+          <p class="diary-text">
+            I hope you always feel loved, never lonely, and always supported because XL is always by your side. 💌
+          </p>
+
+          <p class="diary-text">
+            Happy Girlfriend's Day, beautiful. ❤️🌻
+       <BR> I LOVE YOUUUUUUUU ❤️🌻🥹
+          </p>
+          <p class="diary-signoff">always XL to my XS 🧿</p>
+          <button class="diary-close-btn" id="diary-close-btn"><i class="fa-solid fa-book"></i> Close diary</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REASONS I LOVE YOU ============ -->
+  <section class="section reasons-section">
+    <p class="eyebrow section-eyebrow fade-in">a short, incomplete list</p>
+    <h2 class="section-title fade-in">Reasons I Love You</h2>
+    <div class="reasons-grid">
+      <div class="reason-card fade-in"><span class="reason-icon">🌻</span><h3>Your smile</h3><p>It turns ordinary rooms golden.</p></div>
+      <div class="reason-card fade-in"><span class="reason-icon">🤍</span><h3>Your kindness</h3><p>Quiet, constant, and never asking for anything back.</p></div>
+      <div class="reason-card fade-in"><span class="reason-icon">💜</span><h3>Your laugh</h3><p>My favorite sound in any room.</p></div>
+      <div class="reason-card fade-in"><span class="reason-icon">🫶</span><h3>Your care</h3><p>The way you remember the small things.</p></div>
+      <div class="reason-card fade-in"><span class="reason-icon">✨</span><h3>Everything about you</h3><p>Truly. All of it.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL SECTION ============ -->
+  <section class="section final-section">
+    <div class="final-glow"></div>
+    <p class="final-quote fade-in">"Every sunflower turns toward the sun, just like my heart always turns toward you."</p>
+    <button id="forever-btn" class="btn-forever fade-in">❤️ Forever &amp; Always ❤️</button>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p>Made with <i class="fa-solid fa-heart"></i> especially for you.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
